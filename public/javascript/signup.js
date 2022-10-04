@@ -18,7 +18,7 @@ function signup(event){
     }
 
     console.log(userDetails);
-    axios.post('http://localhost:4000/user/signup',userDetails)
+    axios.post('184.72.160.89:3000/user/signup',userDetails)
     .then(res=>{
 
         if(res.status===201){

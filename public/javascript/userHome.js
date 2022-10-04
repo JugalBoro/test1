@@ -77,7 +77,7 @@ function sendmessage(e){
     }
     console.log(message);
 
-    axios.post('http://localhost:4000/chat/message',message,{headers:{authanticate:token}})
+    axios.post('184.72.160.89:3000/chat/message',message,{headers:{authanticate:token}})
     .then(res=>{
         if(res.status===201){
             // const userMsg = res.data.msg.message;
@@ -123,7 +123,7 @@ function updateMessage(){
     }
     // console.log(lastMsgId)
     let mergeMessageArray;
-    axios.get(`http://localhost:4000/chat/recieve?id=${lastMsgId+1}`,{headers:{authanticate:token}})
+    axios.get(`184.72.160.89:3000/chat/recieve?id=${lastMsgId+1}`,{headers:{authanticate:token}})
     .then(res=>{
         if(res.status===200){
             const msgs = res.data.messages
@@ -180,7 +180,7 @@ function createGroup(e){
         isAdmin: true
     }
     console.log(grpName);
-    axios.post('http://localhost:4000/group/creategroup',grpName,{headers:{authanticate:token}})
+    axios.post('184.72.160.89:3000/group/creategroup',grpName,{headers:{authanticate:token}})
     .then(response=>{
         console.log(response);
         if(response.status === 201){
@@ -209,7 +209,7 @@ function addMemberToGroup(e){
         groupId: form.get('groupID')
     }
     console.log(member);
-    axios.post('http://localhost:4000/group/addmember',member,{headers:{authanticate:token}})
+    axios.post('184.72.160.89:3000/group/addmember',member,{headers:{authanticate:token}})
     .then(response=>{
         if(response.status ===201){
             document.getElementById('groupname-input').value = "";
@@ -228,7 +228,7 @@ function addMemberToGroup(e){
 
 async function userGroups(){
     try {
-        const allGrpDetails = await axios.get('http://localhost:4000/group/name',{headers:{authanticate:token}})
+        const allGrpDetails = await axios.get('184.72.160.89:3000/group/name',{headers:{authanticate:token}})
         const list = (allGrpDetails.data.allgroupName)
         list.forEach(element => {
             const parentElement = document.getElementById('groups-list')
@@ -249,7 +249,7 @@ async function userGroups(){
 
 async function showGrpMsg(id){
     try {
-        const grpMessages = await axios.get(`http://localhost:4000/group/getchat?id=${id}`,{headers:{authanticate:token}});
+        const grpMessages = await axios.get(`184.72.160.89:3000/group/getchat?id=${id}`,{headers:{authanticate:token}});
 
         const textsArr = grpMessages.data.messages;
 
@@ -311,7 +311,7 @@ async function myfunc(e){
     }
     // console.log(message);
 
-    const grpchat = await axios.post('http://localhost:4000/group/sendchat',message,{headers:{authanticate:token}})
+    const grpchat = await axios.post('184.72.160.89:3000/group/sendchat',message,{headers:{authanticate:token}})
     if(grpchat){
         const messageDetail = grpchat.data.messages;
         addMsgToDOM(messageDetail.message,messageDetail.senderName);

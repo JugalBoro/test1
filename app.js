@@ -42,7 +42,7 @@ sequelize
     .sync()
     .then(()=>{
         app.listen(3306, function () {
-            console.log('Example app listening on port 8000!');
+            console.log('Example app listening on port 3306!');
            });
 })
     .catch(err=>{

@@ -7,7 +7,7 @@ function login(e){
     }
     console.log(userDetails);
 
-    axios.post('http://localhost:4000/user/login',userDetails)
+    axios.post('184.72.160.89:3000/user/login',userDetails)
     .then(res=>{
 
         if(res.status === 200){
